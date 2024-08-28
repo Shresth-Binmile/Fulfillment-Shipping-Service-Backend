@@ -26,6 +26,7 @@ export async function processOrderFulfillment(msg:amqp.Message) {
             const notificationMsg:notificationMsgTypes = {
                 userID,
                 orderID,
+                paymentID,
                 message: `${notifications.PAYMENT_FAILED}${orderID}`
             }
 

@@ -38,7 +38,8 @@ export interface notificationMsgTypes {
     userID: string,
     message: string,
     orderID?: string,
-    shippmentID?: string
+    shippmentID?: string,
+    paymentID?: string
 }
 
 export interface paymentSchemaTypes {
