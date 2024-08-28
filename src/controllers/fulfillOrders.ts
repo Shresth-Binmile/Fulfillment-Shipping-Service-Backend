@@ -23,14 +23,14 @@ export async function processOrderFulfillment(msg:amqp.Message) {
         const shippmentID = uuidv4()
         if(status === false){
             // publish every event where payment status is a failure to rabbitmq server
-            const notificationMsg:notificationMsgTypes = {
-                userID,
-                orderID,
-                paymentID,
-                message: `${notifications.PAYMENT_FAILED}${orderID}`
-            }
+            // const notificationMsg:notificationMsgTypes = {
+            //     userID,
+            //     orderID,
+            //     paymentID,
+            //     message: `${notifications.PAYMENT_FAILED}${orderID}`
+            // }
 
-            await connectRabbitMQ(bindingKeys.NOTIFY_MESSAGES, notificationMsg)
+            // await connectRabbitMQ(bindingKeys.NOTIFY_MESSAGES, notificationMsg)
             return
         }
         // after processing save it to DB.
