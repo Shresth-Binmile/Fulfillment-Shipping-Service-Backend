@@ -3,7 +3,7 @@ import { bindingKeys } from '../utils/enums';
 import messages from '../utils/messages';
 import { processOrderFulfillment } from '../controllers/fulfillOrders';
 
-function recieveFromRabbitMQ () {
+async function recieveFromRabbitMQ () {
     amqp.connect('amqp://localhost', function(error0, connection) {
         if (error0) {
             throw error0;

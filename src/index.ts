@@ -7,6 +7,7 @@ import { response } from './common/responses'
 import { urls } from './utils/enums'
 import recieveFromRabbitMQ from './rabbitmq/reciever'
 import router from './routes/route'
+import { connectToLocalRedis } from './redis/connectToLocalRedis'
 
 const app = express()
 
@@ -23,10 +24,13 @@ app.get('/', (req:Request, res:Response)=>{
 
 app.listen(ENV.PORT, async()=>{
     try {
+        console.log(messages.SERVER_RUNNING)
         await connectDB()
-        console.log(`Server is running on http://localhost:${ENV.PORT}/`)
         console.log(messages.DB_CONNECTED)
-        recieveFromRabbitMQ()
+        await recieveFromRabbitMQ()
+        console.log(messages.RABBIT_CONNECTED)
+        await connectToLocalRedis()
+        console.log(messages.REDIS_CONNECTED)
     } catch (error) {
         console.log('Error Listen: ', error)
     }

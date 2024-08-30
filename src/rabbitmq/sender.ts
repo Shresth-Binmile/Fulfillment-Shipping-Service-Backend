@@ -22,9 +22,9 @@ export default async function connectRabbitMQ (bindingKey:string, notificationMs
     
             console.log(" [x] Sent %s", notificationMsg);
         });
-        setTimeout(function() {
-            connection.close();
-            process.exit(0);
-        }, 500);
+        // setTimeout(function() {
+        //     connection.close();
+        //     process.exit(0);
+        // }, 500);
     });
 }
